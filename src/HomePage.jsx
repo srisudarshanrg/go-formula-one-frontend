@@ -13,7 +13,7 @@ function HomePage() {
         headers.append("Content-Type", "application/json");
 
         const developmentBackendLink = "http://localhost:10000/home"
-        const productionBackendLink = "http://go-react-formula-one-backend-production.up.railway.app/home"
+        const productionBackendLink = "https://go-react-formula-one-backend-production.up.railway.app/home"
         console.log(productionBackendLink)
 
         const requestOptions = {
