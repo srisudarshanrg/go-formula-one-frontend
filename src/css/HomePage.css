@@ -1,0 +1,23 @@
+body {
+    text-align: center;
+    font-family: "Work Sans", sans-serif;
+}
+
+h1.this-year-h1 {
+    font-family: "Roboto", sans-serif;
+}
+
+div.current-teams-table-div {
+    margin-left: 2%;
+    overflow-x: scroll;
+    padding: 0;
+}
+
+table.current-teams-table {
+    text-align: start;
+}
+
+div.currentDrivers {
+    height: 60vh;
+    overflow-y: scroll;
+}

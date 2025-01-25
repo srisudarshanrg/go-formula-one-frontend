@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom/client';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { sendToVercelAnalytics } from './vitals';
@@ -9,7 +9,6 @@ import TeamPage from './TeamPage';
 import TrackPage from './TrackPage';
 import ComparePage from './ComparePage';
 import HomePage from './HomePage';
-
 
 const router = createBrowserRouter([
   {
