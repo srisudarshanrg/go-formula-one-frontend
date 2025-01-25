@@ -4,22 +4,23 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { sendToVercelAnalytics } from './vitals';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Drivers from './components/Drivers';
-import Teams from './components/Teams';
-import Tracks from './components/Tracks';
-import Compare from './components/Compare';
-import Home from './components/Home';
+import DriverPage from './DriverPage';
+import TeamPage from './TeamPage';
+import TrackPage from './TrackPage';
+import ComparePage from './ComparePage';
+import HomePage from './HomePage';
+
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      {index: true, element: <Home />},
-      {path: "/drivers", element: <Drivers />},
-      {path: "/teams", element: <Teams />},
-      {path: "/tracks", element: <Tracks />},
-      {path: "/compare", element: <Compare />},
+      {index: true, element: <HomePage />},
+      {path: "/drivers", element: <DriverPage />},
+      {path: "/teams", element: <TeamPage />},
+      {path: "/tracks", element: <TrackPage />},
+      {path: "/compare", element: <ComparePage />},
     ],
   }
 ])

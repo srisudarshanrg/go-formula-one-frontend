@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-function Drivers() {
+function DriverPage() {
     return (
         <Fragment>
             <h1>This is the drivers page</h1>
@@ -8,4 +8,4 @@ function Drivers() {
     )
 }
 
-export default Drivers
+export default DriverPage

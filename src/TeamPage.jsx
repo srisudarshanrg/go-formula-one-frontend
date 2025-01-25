@@ -1,11 +1,11 @@
 import { Fragment } from "react";
 
-function Compare() {
+function TeamPage() {
     return (
         <Fragment>
-            <h1>This is the compare page</h1>
+            <h1>This is the teams page</h1>
         </Fragment>
     )
 }
 
-export default Compare
+export default TeamPage

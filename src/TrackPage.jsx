@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 
-function Tracks() {
+function TrackPage() {
     return (
         <Fragment>
             <h1>This is the tracks page</h1>
@@ -8,4 +8,4 @@ function Tracks() {
     )
 }
 
-export default Tracks
+export default TrackPage
