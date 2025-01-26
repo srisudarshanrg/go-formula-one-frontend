@@ -8,3 +8,7 @@ body {
 .content {
   padding: 1% 2% 2% 2%;
 }
+
+div.row {
+  width: 100%;
+}

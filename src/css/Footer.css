@@ -1,0 +1,11 @@
+div.footer {
+    margin-top: 2%;
+    padding: 3%;
+    border-radius: 10px
+}
+
+div.all-footer-links {
+    background-color: rgb(40, 40, 40);
+    padding: 2%;
+    border-radius: 10px;
+}

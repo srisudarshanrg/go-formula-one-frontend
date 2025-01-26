@@ -1,0 +1,8 @@
+button.track-button {
+    background-color: rgb(40, 40, 40);
+    color: #fff;
+    border-radius: 5px;
+    border: none;
+    margin-top: 2%;
+    padding: 1% 0;
+}

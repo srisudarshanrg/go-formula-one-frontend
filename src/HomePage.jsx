@@ -1,6 +1,7 @@
 import { Fragment, useEffect, useState } from "react";
 import "./css/HomePage.css"
 import CurrentDriver from "./components/CurrentDriver";
+import Track from "./components/Track";
 
 function HomePage() {
     const [currentDrivers, setCurrentDrivers] = useState([]);
@@ -80,6 +81,30 @@ function HomePage() {
                             </table>
                         </div>
                     </div>
+                </div>
+
+                <div className="tracks">
+                    {currentTracks.map((track) => {
+                        let content = <div style={{textAlign: "start", marginTop: "2%"}}>
+                            <p>Name: {track.name}</p>
+                            <p>Length: {track.length} km</p>
+                            <p>Number of corners: {track.number_corners}</p>
+                            <p>Number of straights: {track.number_straights}</p>
+                            <p>Number of DRS Zones: {track.number_drs_zones}</p>
+                            <p>Year of introduction to F1: {track.year}</p>
+                            <p>Country: {track.country}</p>                            
+                        </div>
+                        let modalID = `trackModal${track.id}`
+                        return (
+                            <Track
+                                key={track.id}
+                                modalID={modalID}
+                                name={track.name}
+                                content={content}
+                                image={track.image}
+                            />
+                        );             
+                    })}
                 </div>
             </div>
         </Fragment>

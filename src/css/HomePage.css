@@ -21,3 +21,10 @@ div.currentDrivers {
     height: 60vh;
     overflow-y: scroll;
 }
+
+div.tracks {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    padding: 2%;
+    gap: 1%;
+}

@@ -9,11 +9,13 @@ import TeamPage from './TeamPage';
 import TrackPage from './TrackPage';
 import ComparePage from './ComparePage';
 import HomePage from './HomePage';
+import ErrorPage from './ErrorPage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <ErrorPage />,
     children: [
       {index: true, element: <HomePage />},
       {path: "/drivers", element: <DriverPage />},
