@@ -4,7 +4,7 @@ import "../css/Track.css"
 
 function Track(props) {
     return (
-        <Fragment key={props.key}>
+        <Fragment>
             <Modal
                 id={props.modalID}
                 title={props.name}

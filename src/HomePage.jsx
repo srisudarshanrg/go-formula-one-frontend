@@ -2,19 +2,21 @@ import { Fragment, useEffect, useState } from "react";
 import "./css/HomePage.css"
 import CurrentDriver from "./components/CurrentDriver";
 import Track from "./components/Track";
+import { useOutletContext } from "react-router-dom";
 
 function HomePage() {
     const [currentDrivers, setCurrentDrivers] = useState([]);
     const [currentTeams, setCurrentTeams] = useState([]);
     const [currentTracks, setCurrrentTracks] = useState([]);
 
+    const { developmentBackendLink } = useOutletContext();
+    const { productionBackendLink } = useOutletContext;
+
     // get 2024 info
     useEffect(() => {
         const headers = new Headers();
         headers.append("Content-Type", "application/json");
 
-        const developmentBackendLink = "http://localhost:10000/home"
-        const productionBackendLink = "https://go-react-formula-one-backend-production.up.railway.app/home"
         console.log(productionBackendLink)
 
         const requestOptions = {
@@ -22,7 +24,7 @@ function HomePage() {
             headers: headers,
         }
 
-        fetch(productionBackendLink, requestOptions)
+        fetch(developmentBackendLink + "home", requestOptions)
             .then(response => response.json())
             .then(data => {
                 setCurrentDrivers(data.current_drivers);
