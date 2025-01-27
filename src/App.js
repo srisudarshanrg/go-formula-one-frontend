@@ -30,7 +30,7 @@ function App() {
       body: JSON.stringify(payload),
     }
 
-    fetch(developmentBackendLink + "search", requestOptions)
+    fetch(productionBackendLink + "search", requestOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.error) {
@@ -101,7 +101,7 @@ function App() {
       }
       <div className="content">
         <Outlet context={{
-          developmentBackendLink,
+          productionBackendLink,
           productionBackendLink,
         }}>
 

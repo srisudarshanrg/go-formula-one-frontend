@@ -9,8 +9,8 @@ function HomePage() {
     const [currentTeams, setCurrentTeams] = useState([]);
     const [currentTracks, setCurrrentTracks] = useState([]);
 
-    const { developmentBackendLink } = useOutletContext();
-    const { productionBackendLink } = useOutletContext;
+    const { productionBackendLink } = useOutletContext();
+    const { developmentBackendLink } = useOutletContext;
 
     // get 2024 info
     useEffect(() => {
@@ -24,7 +24,7 @@ function HomePage() {
             headers: headers,
         }
 
-        fetch(developmentBackendLink + "home", requestOptions)
+        fetch(productionBackendLink + "home", requestOptions)
             .then(response => response.json())
             .then(data => {
                 setCurrentDrivers(data.current_drivers);
