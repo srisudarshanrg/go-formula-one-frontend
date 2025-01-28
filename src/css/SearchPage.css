@@ -1,0 +1,25 @@
+div.search-results {
+    padding: 1%;
+}
+  
+div.drivers {
+    width: 100%;
+    overflow-x: scroll;
+}
+
+div.tracksSearchPage {
+    padding: 1%;
+}
+
+div.teams, div.drivers, div.tracksSearchPage {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    overflow-x: scroll;
+    gap: 2%;
+}
+
+div.driver, div.team, div.track {
+    flex: 0 0 auto;
+    margin-bottom: 2%;
+}

@@ -10,14 +10,12 @@ function HomePage() {
     const [currentTracks, setCurrrentTracks] = useState([]);
 
     const { productionBackendLink } = useOutletContext();
-    const { developmentBackendLink } = useOutletContext;
+    const { developmentBackendLink } = useOutletContext();
 
     // get 2024 info
     useEffect(() => {
         const headers = new Headers();
         headers.append("Content-Type", "application/json");
-
-        console.log(productionBackendLink)
 
         const requestOptions = {
             method: "GET",

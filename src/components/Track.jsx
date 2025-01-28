@@ -12,7 +12,7 @@ function Track(props) {
                 image={props.image}
             />
 
-            <button className="track-button" data-bs-toggle="modal" data-bs-target={`#${props.modalID}`}>
+            <button className="track-button" data-bs-toggle="modal" data-bs-target={`#${props.modalID}`} style={props.style}>
                 <h3>{props.name}</h3>
             </button>
         </Fragment>

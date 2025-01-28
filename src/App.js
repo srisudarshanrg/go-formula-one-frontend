@@ -1,14 +1,18 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
 import './css/App.css';
 import Footer from './components/Footer';
 import logo from "./img/logo.jpg"
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Driver from './components/Driver';
+import SearchPage from './SearchPage';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [driverSearch, setDriverSearch] = useState([]);
   const [teamSearch, setTeamSearch] = useState([]);
   const [trackSearch, setTrackSearch] = useState([]);
+
+  const navigate = useNavigate();
 
   const developmentBackendLink = "http://localhost:10000/"
   const productionBackendLink = "https://go-react-formula-one-backend-production.up.railway.app/"
@@ -47,6 +51,14 @@ function App() {
         console.log(error)
       })
   }
+
+  useEffect(() => {
+    console.log(driverSearch)
+    console.log(teamSearch)
+    console.log(trackSearch)
+
+    navigate("/")
+  }, [driverSearch, teamSearch, trackSearch])
 
   return (
     <div className="App">
@@ -93,16 +105,17 @@ function App() {
             </div>
         </div>
       </nav>
-      {(driverSearch.length > 0 || teamSearch > 0 || trackSearch > 0) &&
-        <div className="search-results">
-          
-          <hr />
-        </div>
+      {(driverSearch.length > 0 || teamSearch.length > 0 || trackSearch.length > 0) &&
+        navigate("/search-results")
       }
       <div className="content">
         <Outlet context={{
+          developmentBackendLink,
           productionBackendLink,
-          productionBackendLink,
+          navigate,
+          driverSearch,
+          teamSearch,
+          trackSearch
         }}>
 
         </Outlet>

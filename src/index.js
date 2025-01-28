@@ -10,6 +10,7 @@ import TrackPage from './TrackPage';
 import ComparePage from './ComparePage';
 import HomePage from './HomePage';
 import ErrorPage from './ErrorPage';
+import SearchPage from './SearchPage';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,7 @@ const router = createBrowserRouter([
       {path: "/teams", element: <TeamPage />},
       {path: "/tracks", element: <TrackPage />},
       {path: "/compare", element: <ComparePage />},
+      {path: "/search-results", element: <SearchPage />}
     ],
   }
 ])
