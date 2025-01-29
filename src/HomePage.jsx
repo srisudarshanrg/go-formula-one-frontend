@@ -41,6 +41,7 @@ function HomePage() {
 
                 <div className="row" style={{marginTop: "2%"}}>
                     <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12 currentDrivers">
+                        <h3>Driver's Championship</h3>
                         {currentDrivers.map((driver) => (
                             <div key={driver.id}>
                                 <CurrentDriver
@@ -57,6 +58,7 @@ function HomePage() {
                     </div>
 
                     <div className="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <h3>Constructor's Championship</h3>
                         <div className="current-teams-table-div">
                             <table className="table table-dark table-striped table-hover current-teams-table">
                                 <thead>
@@ -82,29 +84,32 @@ function HomePage() {
                         </div>
                     </div>
                 </div>
-
-                <div className="tracks">
-                    {currentTracks.map((track) => {
-                        let content = <div style={{textAlign: "start", marginTop: "2%"}}>
-                            <p>Name: {track.name}</p>
-                            <p>Length: {track.length} km</p>
-                            <p>Number of corners: {track.number_corners}</p>
-                            <p>Number of straights: {track.number_straights}</p>
-                            <p>Number of DRS Zones: {track.number_drs_zones}</p>
-                            <p>Year of introduction to F1: {track.year}</p>
-                            <p>Country: {track.country}</p>                            
-                        </div>
-                        let modalID = `trackModal${track.id}`
-                        return (
-                            <Track
-                                key={track.id}
-                                modalID={modalID}
-                                name={track.name}
-                                content={content}
-                                image={track.image}
-                            />
-                        );             
-                    })}
+                                    
+                <div className="tracks-part">
+                    <h3>Tracks</h3>
+                    <div className="tracks-grid">
+                        {currentTracks.map((track) => {
+                            let content = <div style={{textAlign: "start", marginTop: "2%"}}>
+                                <p>Name: {track.name}</p>
+                                <p>Length: {track.length} km</p>
+                                <p>Number of corners: {track.number_corners}</p>
+                                <p>Number of straights: {track.number_straights}</p>
+                                <p>Number of DRS Zones: {track.number_drs_zones}</p>
+                                <p>Year of introduction to F1: {track.year}</p>
+                                <p>Country: {track.country}</p>                            
+                            </div>
+                            let modalID = `trackModal${track.id}`
+                            return (
+                                <Track
+                                    key={track.id}
+                                    modalID={modalID}
+                                    name={track.name}
+                                    content={content}
+                                    image={track.image}
+                                />
+                            );             
+                        })}
+                    </div>
                 </div>
             </div>
         </Fragment>

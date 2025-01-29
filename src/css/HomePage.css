@@ -18,13 +18,16 @@ table.current-teams-table {
 }
 
 div.currentDrivers {
-    height: 60vh;
+    height: 70vh;
     overflow-y: scroll;
 }
 
-div.tracks {
+div.tracks-part {
+    padding: 2%;
+}
+
+div.tracks-grid {
     display: grid;
     grid-template-columns: repeat(4, 25%);
-    padding: 2%;
     gap: 1%;
 }

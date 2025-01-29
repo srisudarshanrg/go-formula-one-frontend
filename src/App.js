@@ -3,8 +3,6 @@ import './css/App.css';
 import Footer from './components/Footer';
 import logo from "./img/logo.jpg"
 import { useEffect, useState } from 'react';
-import Driver from './components/Driver';
-import SearchPage from './SearchPage';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -53,11 +51,9 @@ function App() {
   }
 
   useEffect(() => {
-    console.log(driverSearch)
-    console.log(teamSearch)
-    console.log(trackSearch)
-
-    navigate("/")
+    if (driverSearch.length > 0 || teamSearch.length > 0 || trackSearch.length > 0) {
+      navigate("/search-results")
+    }
   }, [driverSearch, teamSearch, trackSearch])
 
   return (
@@ -105,19 +101,19 @@ function App() {
             </div>
         </div>
       </nav>
-      {(driverSearch.length > 0 || teamSearch.length > 0 || trackSearch.length > 0) &&
-        navigate("/search-results")
-      }
       <div className="content">
         <Outlet context={{
           developmentBackendLink,
           productionBackendLink,
           navigate,
           driverSearch,
+          setDriverSearch,
           teamSearch,
-          trackSearch
+          setTeamSearch,
+          trackSearch,
+          setTrackSearch,
+          searchQuery,
         }}>
-
         </Outlet>
       </div>
       <Footer></Footer>

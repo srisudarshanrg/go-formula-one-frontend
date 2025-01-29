@@ -2,23 +2,43 @@ import { useOutletContext } from "react-router-dom"
 import "./css/SearchPage.css"
 import Driver from "./components/Driver";
 import Track from "./components/Track";
+import { useEffect, useState } from "react";
 
 function SearchPage(props) {
-    let { driverSearch, teamSearch, trackSearch, navigate } = useOutletContext();
+    let { driverSearch, setDriverSearch, teamSearch, setTeamSearch, trackSearch, setTrackSearch, searchQuery, navigate } = useOutletContext();
 
-    if (driverSearch.length === 0 && teamSearch.length === 0 && trackSearch.length === 0) {
-        navigate("/")
-    }
+    const [displayDrivers, setDisplayDrivers] = useState([]);
+    const [displayTeams, setDisplayTeams] = useState([]);
+    const [displayTracks, setDisplayTracks] = useState([]);
+
+    useEffect(() => {
+        if (driverSearch.length > 0 || teamSearch.length > 0 || trackSearch.length > 0) {
+            setDisplayDrivers(driverSearch);
+            setDisplayTeams(teamSearch);
+            setDisplayTracks(trackSearch);
+
+            setDriverSearch([]);
+            setTeamSearch([]);
+            setTrackSearch([]);
+        }
+    }, [driverSearch.length, teamSearch.length, trackSearch.length])
 
     return (
         <div className="search-results" style={{paddingTop: "1%"}}>
             <h1>Search Results</h1>
+
+            <div className="alert alert-danger">
+                Search query: {searchQuery}
+            </div>
+
+            <hr />
             
             <div className="category-results-div">
                 <h4 style={{marginTop: "2px"}}>Drivers</h4>
-                {driverSearch.length > 0 && 
+                <h5>{displayDrivers.length} driver(s) found</h5>
+                {displayDrivers.length > 0 && 
                     <div className="drivers">
-                        {driverSearch.map((driver) => (
+                        {displayDrivers.map((driver) => (
                             <div key={driver.id} className="driver">                    
                                 <Driver
                                     name={driver.name}
@@ -40,9 +60,10 @@ function SearchPage(props) {
             
             <div className="category-results-div">
                 <h4 style={{marginTop: "2px"}}>Teams</h4>
-                {teamSearch.length > 0 &&
+                <h5>{displayTeams.length} team(s) found</h5>
+                {displayTeams.length > 0 &&
                     <div className="teams">
-                        {teamSearch.map((team) => (
+                        {displayTeams.map((team) => (
                             <div key={team.id} className="team">                    
                                 <h3>{team.name}</h3>
                             </div>
@@ -55,10 +76,11 @@ function SearchPage(props) {
             <hr style={{marginTop: "2%"}} />
             
             <div className="category-results-div">
-                <h4 style={{marginTop: "2px"}}>Tracks</h4>
-                {trackSearch.length > 0 &&
+                <h4 style={{marginTop: "2px"}}>Tracks</h4>                
+                <h5>{displayTracks.length} track(s) found</h5>
+                {displayTracks.length > 0 &&
                     <div className="tracksSearchPage">
-                        {trackSearch.map((track) => {
+                        {displayTracks.map((track) => {
                             let content = <div style={{textAlign: "start", marginTop: "2%"}}>
                                 <p>Name: {track.name}</p>
                                 <p>Length: {track.length} km</p>
@@ -84,7 +106,7 @@ function SearchPage(props) {
                     </div>
                 }
             </div>
-        </div>
+        </div>        
     )
 }
 
