@@ -3,12 +3,15 @@ import './css/App.css';
 import Footer from './components/Footer';
 import logo from "./img/logo.jpg"
 import { useEffect, useState } from 'react';
+import Alert from './components/Alert';
 
 function App() {
   const [searchQuery, setSearchQuery] = useState("");
   const [driverSearch, setDriverSearch] = useState([]);
   const [teamSearch, setTeamSearch] = useState([]);
   const [trackSearch, setTrackSearch] = useState([]);
+  const [resultsExist, setResultsExist] = useState(true);
+  const [searchLoading, setSearchLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -19,6 +22,8 @@ function App() {
     event.preventDefault();
     console.log("Form submitted")
     console.log(searchQuery)
+
+    setSearchLoading(true);
 
     let payload = {
       search_query: searchQuery,
@@ -37,16 +42,27 @@ function App() {
       .then((data) => {
         if (data.error) {
           console.log(data.message)
+          setResultsExist(false);
         } else {
-          setDriverSearch(data.driver_search || []);
-          setTeamSearch(data.team_search || []);
-          setTrackSearch(data.track_search || []);
-
+          if ((data.driver_search && data.driver_search.length > 0) || 
+              (data.team_search && data.teamSearch.length > 0) ||
+              (data.track_search && data.track_search.length > 0)) {
+            setDriverSearch(data.driver_search || []);
+            setTeamSearch(data.team_search || []);
+            setTrackSearch(data.track_search || []);
+            setResultsExist(true)
+          } else {
+            navigate("/")
+            setResultsExist(false);
+          }
           console.log(data.ok)
         }
+        setSearchLoading(false);
       })
       .catch(error => {
         console.log(error)
+        setSearchLoading(false);
+        setResultsExist(false);
       })
   }
 
@@ -102,6 +118,19 @@ function App() {
         </div>
       </nav>
       <div className="content">
+        {!resultsExist &&
+          <Alert
+            className="alert-danger"
+            content={`No results found for "${searchQuery}"`}
+          />
+        }
+        {searchLoading &&
+          <div className="d-flex justify-content-center">
+            <div className="spinner-border text-danger" role="status">
+              <span className="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        }
         <Outlet context={{
           developmentBackendLink,
           productionBackendLink,

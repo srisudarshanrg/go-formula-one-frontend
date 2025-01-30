@@ -9,8 +9,8 @@ function HomePage() {
     const [currentTeams, setCurrentTeams] = useState([]);
     const [currentTracks, setCurrrentTracks] = useState([]);
 
-    const { productionBackendLink } = useOutletContext();
     const { developmentBackendLink } = useOutletContext();
+    const { productionBackendLink } = useOutletContext();
 
     // get 2024 info
     useEffect(() => {

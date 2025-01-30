@@ -3,6 +3,7 @@ import "./css/SearchPage.css"
 import Driver from "./components/Driver";
 import Track from "./components/Track";
 import { useEffect, useState } from "react";
+import Alert from "./components/Alert";
 
 function SearchPage(props) {
     let { driverSearch, setDriverSearch, teamSearch, setTeamSearch, trackSearch, setTrackSearch, searchQuery, navigate } = useOutletContext();
@@ -27,9 +28,10 @@ function SearchPage(props) {
         <div className="search-results" style={{paddingTop: "1%"}}>
             <h1>Search Results</h1>
 
-            <div className="alert alert-danger">
-                Search query: {searchQuery}
-            </div>
+            <Alert
+                className="alert-primary"
+                content={`Search: "${searchQuery}"`}
+            />
 
             <hr />
             
