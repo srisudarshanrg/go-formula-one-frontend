@@ -1,0 +1,18 @@
+button.team-button {
+    background-color: rgb(30, 30, 30);
+    color: #ff5a4e;
+    border: none;
+    width: 100%;
+    margin-top: 5%;
+    height: 10vh;
+    text-transform: uppercase;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+button.team-button:hover {
+    transform: scale(0.99);
+    background-color: #ff5a4e;
+    color: rgb(30, 30, 30);
+    transition: 0.3s;
+}

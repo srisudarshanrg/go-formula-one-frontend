@@ -1,6 +1,6 @@
 function Modal(props) {
     return (
-        <div className="modal fade" id={props.id} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div className="modal fade" id={props.id} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style={props.style}>
             <div className="modal-dialog">
                 <div className="modal-content text-bg-dark">
                     <div className="modal-header">
@@ -9,7 +9,7 @@ function Modal(props) {
                     </div>
                     <div className="modal-body">
                         {props.image !== null
-                        &&   <img src={props.image} alt={props.name} style={{width: "100%", borderRadius: "10px"}}/>  
+                        &&   <img src={props.image} alt={props.name} style={{width: "100%", borderRadius: "10px", marginBottom: "5%"}} />  
                         }
                         {props.content}
                     </div>
